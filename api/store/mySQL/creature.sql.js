@@ -14,8 +14,6 @@ class CreatureSQL extends DBController {
             const result = await this.executeQuery(query, __dirname, 'getAllCreature');
 
             this.disconnect();
-
-            console.log(result)
             return result;
 
         } catch (error) {
