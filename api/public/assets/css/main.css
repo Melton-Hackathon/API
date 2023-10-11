@@ -24,7 +24,7 @@ svg {
 }
 
 body {
-  background: #fff;
+  background: #1212125b;
   color: #333;
   font-family: 'Ubuntu', sans-serif;
   position: relative;
@@ -42,27 +42,17 @@ header {
 }
 
 main {
-  background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
+  background: linear-gradient(to bottom, 0%, #1212125b 100%);
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 10vh 0 80vh;
   position: relative;
   text-align: center;
   overflow: hidden;
-
-  &::after {
-    border-right: 2px dashed #eee;
-    content: '';
-    position: absolute;
-    top: calc(10vh + 1.618em);
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-  }
 }
 
 footer {
-  background: #dddee1;
+  background: #121212;
+  color: #fff;
   padding: 5vh 0;
   text-align: center;
   position: relative;

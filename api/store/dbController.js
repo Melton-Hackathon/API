@@ -1,12 +1,13 @@
-const mysql = require('mysql');
+require('dotenv').config();
+const mysql = require('mysql2');
 
 class DBController {
     constructor() {
         this.connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'admin',
-            password: 'debtsNote12345+',
-            database: 'debtsNote',
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
         });
     }
 
@@ -14,8 +15,6 @@ class DBController {
         this.connection.connect((error) => {
             if (error) {
                 console.error('Error connecting to the database:', error.message);
-            } else {
-                console.log('Connected to MySQL database');
             }
         });
     }
@@ -24,63 +23,57 @@ class DBController {
         this.connection.end((error) => {
             if (error) {
                 console.error('Error disconnecting from the database:', error.message);
-            } else {
-                console.log('Disconnected from MySQL database');
             }
         });
     }
 
-    executeQuery(query, dirname, method) {
-        this.connection.query(query, (error, result) => {
-            if (error) {
-                console.error('Error executing query:', error.message);
-            } else {
-                this.__log({
-                    message: 'Query executed successfully',
-                    query: query,
-                    path: dirname,
-                    method: method,
-                    status: 'Active',
-                });
-                console.log(`Query: ${query} executed successfully`);
-                return result;
-            }
+    async executeQuery(query, dirname, method) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(query, (error, data) => {
+                if (error) {
+                    console.error('Error executing query:', error.message);
+                    reject(error);
+                } else {
+                    this.__log({
+                        message: 'Query executed successfully',
+                        query: query,
+                        path: dirname,
+                        method: method,
+                        status: 'Active',
+                    });
+                    resolve(data);
+                }
+            });
         });
     }
+    
 
-    fetchQueryData(query, dirname, method) {
-        this.connection.query(query, (error, result) => {
-            if (error) {
-                console.error('Error fetching data:', error.message);
-                return []; // Return an empty array to indicate failure
-            } else {
-                this.__log({
-                    message: 'Data fetched successfully',
-                    query: query,
-                    path: dirname,
-                    method: method,
-                    status: 'Active',
-                });
-                return result;
-            }
+    async fetchQueryData(query, dirname, method) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(query, (error, data) => {
+                if (error) {
+                    console.error('Error executing query:', error.message);
+                    reject(error);
+                } else {
+                    this.__log({
+                        message: 'Query executed successfully',
+                        query: query,
+                        path: dirname,
+                        method: method,
+                        status: 'Active',
+                    });
+                    resolve(data);
+                }
+            });
         });
     }
+    
 
     __log(data) {
         const { message, path, method, status, query } = data;
         const timestamp = new Date().toISOString();
-        const logQuery = `
-            INSERT INTO logs (message, path, method, status, timestamp, query)
-            VALUES ('${message}', '${path}', '${method}', '${status}', '${timestamp}', '${query}');
-        `;
 
-        this.connection.query(logQuery, (error) => {
-            if (error) {
-                console.error('Error logging data:', error.message);
-            } else {
-                console.log('Data logged successfully');
-            }
-        });
+        console.log(`[${timestamp}] ${message} | ${path} => ${method}   +-+  ${status}`)
     }
 }
 

@@ -5,6 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3070:3070
+      - 3000:3000
     volumes:
       - ./api:/api

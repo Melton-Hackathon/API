@@ -16,10 +16,13 @@ app.use("/", express.static(path.join(__dirname, "public")));
 // Benutzer-Routen importieren
 const matchHistoryRouter = require("./routes/matchHistory.router.js");
 const userRouter = require("./routes/user.router.js");
+const creatureRouter = require("./routes/creature.router.js");
 
 // Benutzer-Routen verwenden
 app.use("/api/matchHistory", matchHistoryRouter);
 app.use("/api/benutzer", userRouter);
+app.use("/api/creature", creatureRouter);
+
 
 const PORT = process.env.PORT || 3050;
 server.listen(PORT, () => {
