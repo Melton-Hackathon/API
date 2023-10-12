@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     console.log(`load view on src: %c${url}`, 'COLOR: grey;');
     
-    $("#content").load(url);
+    $("#app").load(url);
     $("#site-title").value = hash.slice(1);
   }
 

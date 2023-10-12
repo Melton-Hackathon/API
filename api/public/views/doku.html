@@ -1,81 +1,97 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API-Dokumentation</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/doku.css"> <!-- Link zur externen CSS-Datei -->
-</head>
-<body>
-
-  <header class="bg-primary text-white text-center py-5">
-    <h1>API-Dokumentation</h1>
-  </header>
-
-  <div class="nav">
-    <!-- Navigation -->
-    <ul>
-      <li><a href="#endpoint1" class="nav-link active">Endpoint 1</a></li>
-      <li><a href="#endpoint2" class="nav-link">Endpoint 2</a></li>
-      <!-- Weitere Endpunkte -->
-    </ul>
-  </div>
-
-  <div class="content">
-    <!-- Hauptinhalt -->
-    <div class="row">
-      <div class="col-md-9">
-        <!-- Endpoint 1 -->
-        <section id="endpoint1">
-          <h2>Endpoint 1</h2>
-          <p>Beschreibung und Details zu Endpoint 1.</p>
-
-          <!-- Beispielanfragen und -antworten -->
-          <h3>Beispielanfragen</h3>
-          <pre>
-            <code>
-              curl -X GET https://api.example.com/endpoint1
-            </code>
-          </pre>
-
-          <h3>Beispielantwort</h3>
-          <pre>
-            <code>
-              {
-                "message": "Antwort vom Endpoint 1"
-              }
-            </code>
-          </pre>
-        </section>
-
-        <!-- Endpoint 2 -->
-        <section id="endpoint2">
-          <h2>Endpoint 2</h2>
-          <p>Beschreibung und Details zu Endpoint 2.</p>
-
-          <!-- Beispielanfragen und -antworten -->
-          <h3>Beispielanfragen</h3>
-          <pre>
-            <code>
-              curl -X POST https://api.example.com/endpoint2 -d "data=example"
-            </code>
-          </pre>
-
-          <h3>Beispielantwort</h3>
-          <pre>
-            <code>
-              {
-                "message": "Antwort vom Endpoint 2"
-              }
-            </code>
-          </pre>
-        </section>
-        <!-- Weitere Endpunkte -->
-      </div>
+<div id="doku-body">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a class="nav-item big_text" href="#home">Home</a>
+        <div class="d-flex flex-row">
+            <div id="creature-markdown-title-arrow">
+                <p class="nav-item big_text">+</p>
+            </div><a class="nav-item big_text" id="creature-markdown-title">Creatures</a>
+        </div>
+        <div id="creature-markdown">
+            <ul class="markdown-ul">
+                <li><a class="nav-item" href="#doku/#creatures-all">All</a></li>
+                <li><a class="nav-item" href="#doku/#creaturesStats">Creature Stats</a></li>
+            </ul>
+        </div>
+        <a class="nav-item big_text" id=""></a>
     </div>
-  </div>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <!-- Content -->
+    <div class="doku-content">
+        <div id="section-container">
+            <div id="doku-title">
+                <h1><b>Melton API</b></h1><strong>1.0</strong>
+            </div>
+            <h5>version: 1.0</h5>
+            <h5>description</h5>
+            <section id="creatures">
+                <section id="creatures-all">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            Endpoint 2: /api/endpoint2
+                        </div>
+                        <div class="card-body">
+                            <p>Beschreibung: Beschreibung des Endpoints 2.</p>
+                            <p>HTTP-Methode: POST</p>
+                            <p>Parameter:</p>
+                            <ul>
+                                <li><code>param1</code> (string) - Parameter 1 Beschreibung.</li>
+                                <li><code>param2</code> (integer) - Parameter 2 Beschreibung.</li>
+                            </ul>
+                            <p>Beispielaufruf: <code>POST /api/endpoint2</code> mit JSON-Daten:</p>
+                            <pre>
+    {
+      "param1": "value1",
+      "param2": 123
+    }
+                          </pre>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section id="creatures">
+                <section id="creatures-all">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            Endpoint 2: /api/endpoint2
+                        </div>
+                        <div class="card-body">
+                            <p>Beschreibung: Beschreibung des Endpoints 2.</p>
+                            <p>HTTP-Methode: POST</p>
+                            <p>Parameter:</p>
+                            <ul>
+                                <li><code>param1</code> (string) - Parameter 1 Beschreibung.</li>
+                                <li><code>param2</code> (integer) - Parameter 2 Beschreibung.</li>
+                            </ul>
+                            <p>Beispielaufruf: <code>POST /api/endpoint2</code> mit JSON-Daten:</p>
+                            <pre>
+    {
+      "param1": "value1",
+      "param2": 123
+    }
+                          </pre>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <div id="output">
+            <input type="text" id="endpoint_url_input" readonly>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Define a rotate function to rotate the arrow
+    function rotateArrow() {
+        $('#creature-markdown-title-arrow').toggleClass('rotated');
+    }
+
+    $(document).ready(function () {
+        $("#creature-markdown").hide();
+        $("#creature-markdown-title").click(function () {
+            rotateArrow();
+            $("#creature-markdown").toggle();
+        });
+    });
+</script>

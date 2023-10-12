@@ -42,6 +42,15 @@ header {
   text-align: center;
 }
 
+header > p{
+  font-size: 20px;
+  margin-top: 2%;
+}
+
+header > p > a{
+  margin-left: 5px;
+}
+
 main {
   background: linear-gradient(to bottom, 0%, #1212125b 100%);
   border-bottom: 1px solid rgba(0, 0, 0, .2);

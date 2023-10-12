@@ -1,55 +1,99 @@
-/* Stil für die Navigation */
-.nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px; /* Breite des Navigationsbereichs */
-    background-color: #f8f9fa; /* Hintergrundfarbe ändern */
-    padding-top: 20px;
-    overflow-y: auto; /* Scrollen für den Fall, dass die Navigation zu lang wird */
-  }
-  
-  .nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .nav-link {
-    color: #343a40;
-    padding: 10px 20px;
-    display: block;
-    text-decoration: none;
-  }
-  
-  .nav-link:hover {
-    background-color: #dee2e6;
-  }
-  
-  .nav-link.active {
-    font-weight: bold;
-    background-color: #007BFF;
-    color: white;
-  }
-  
-  /* Hauptinhalt mit seitlichem Abstand */
-  .content {
-    margin-left: 270px; /* Berücksichtige die Breite der Navigation */
-    padding: 20px;
-  }
-  
-  /* Responsive Design für Mobilgeräte */
-  @media (max-width: 767px) {
-    .nav {
-      position: static; /* Normale Positionierung für kleine Bildschirme */
-      width: auto;
-      height: auto;
-      padding-top: 0;
-      overflow-y: visible; /* Zeige den Scrollbalken für lange Navigationsinhalte */
+    /* Custom styles for sidebar */
+    #doku-body {
+        display: flex;
     }
-  
-    .content {
-      margin-left: 0; /* Kein seitlicher Abstand für den Hauptinhalt */
+
+    .sidebar {
+        height: window.innerHeight;
+        width: 15%;
+        top: 0;
+        left: 0;
+        background-color: #121212;
+        overflow-x: hidden;
+        transition: 0.3s;
+        padding-top: 60px;
     }
-  }
-  
+
+    .nav-item {
+        padding: 15px 15px;
+        text-decoration: none;
+        font-size: 20px;
+        color: rgb(75, 75, 75);
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+        text-decoration: none;
+    }
+
+    .doku-content {
+        width: 60%;
+        padding: 6rem;
+    }
+
+    #doku-title {
+        display: flex;
+        margin-bottom: 2rem;
+    }
+
+    #doku-title>strong {
+        color: rgb(75, 75, 75);
+        margin-top: 1.6rem;
+        margin-left: 8px;
+        font-size: 17px;
+    }
+
+    .doku-content{
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow-y: scroll;
+    }
+
+    #output{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 25%;
+        height: 100%;
+        background-color: rgb(24, 43, 61);
+        padding: 5%;
+        padding-top: 2.5%;
+    }
+
+    .big_text{
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(75, 75, 75);
+    }
+
+    .markdown-ul{
+        line-height: 5px;
+        margin-left: 25px;
+    }
+
+    .markdown-ul > li{
+        list-style-type: none;
+        margin-left: 4rem;
+    }
+
+    #creature-markdown-title{
+        cursor: pointer;
+    }
+
+    .rotated{
+        transform: rotate(90deg);
+        color: #f1f1f1;
+    }
+
+    #output > input{
+        width: 100%;
+        height: 40px;
+        padding: 3px;
+        background-color: rgb(14, 29, 43);
+        color: rgb(32, 95, 190);
+        border: none;
+    }
