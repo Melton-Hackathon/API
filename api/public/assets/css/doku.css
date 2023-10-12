@@ -1,0 +1,55 @@
+/* Stil für die Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* Breite des Navigationsbereichs */
+    background-color: #f8f9fa; /* Hintergrundfarbe ändern */
+    padding-top: 20px;
+    overflow-y: auto; /* Scrollen für den Fall, dass die Navigation zu lang wird */
+  }
+  
+  .nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .nav-link {
+    color: #343a40;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    background-color: #dee2e6;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  /* Hauptinhalt mit seitlichem Abstand */
+  .content {
+    margin-left: 270px; /* Berücksichtige die Breite der Navigation */
+    padding: 20px;
+  }
+  
+  /* Responsive Design für Mobilgeräte */
+  @media (max-width: 767px) {
+    .nav {
+      position: static; /* Normale Positionierung für kleine Bildschirme */
+      width: auto;
+      height: auto;
+      padding-top: 0;
+      overflow-y: visible; /* Zeige den Scrollbalken für lange Navigationsinhalte */
+    }
+  
+    .content {
+      margin-left: 0; /* Kein seitlicher Abstand für den Hauptinhalt */
+    }
+  }
+  

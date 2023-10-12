@@ -7,8 +7,8 @@ class UserSQL extends DBController {
 
     getAllUser() {
         this.connect();
-        const query = 'SELECT * FROM matchHistory';
-        const result = this.executeQuery(query, __dirname, 'getMatchHistory');
+        const query = 'SELECT * FROM users';
+        const result = this.executeQuery(query, __dirname, 'getAllUser');
         this.disconnect();
         return result;
     }

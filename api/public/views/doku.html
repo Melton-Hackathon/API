@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API-Dokumentation</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/doku.css"> <!-- Link zur externen CSS-Datei -->
+</head>
+<body>
+
+  <header class="bg-primary text-white text-center py-5">
+    <h1>API-Dokumentation</h1>
+  </header>
+
+  <div class="nav">
+    <!-- Navigation -->
+    <ul>
+      <li><a href="#endpoint1" class="nav-link active">Endpoint 1</a></li>
+      <li><a href="#endpoint2" class="nav-link">Endpoint 2</a></li>
+      <!-- Weitere Endpunkte -->
+    </ul>
+  </div>
+
+  <div class="content">
+    <!-- Hauptinhalt -->
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Endpoint 1 -->
+        <section id="endpoint1">
+          <h2>Endpoint 1</h2>
+          <p>Beschreibung und Details zu Endpoint 1.</p>
+
+          <!-- Beispielanfragen und -antworten -->
+          <h3>Beispielanfragen</h3>
+          <pre>
+            <code>
+              curl -X GET https://api.example.com/endpoint1
+            </code>
+          </pre>
+
+          <h3>Beispielantwort</h3>
+          <pre>
+            <code>
+              {
+                "message": "Antwort vom Endpoint 1"
+              }
+            </code>
+          </pre>
+        </section>
+
+        <!-- Endpoint 2 -->
+        <section id="endpoint2">
+          <h2>Endpoint 2</h2>
+          <p>Beschreibung und Details zu Endpoint 2.</p>
+
+          <!-- Beispielanfragen und -antworten -->
+          <h3>Beispielanfragen</h3>
+          <pre>
+            <code>
+              curl -X POST https://api.example.com/endpoint2 -d "data=example"
+            </code>
+          </pre>
+
+          <h3>Beispielantwort</h3>
+          <pre>
+            <code>
+              {
+                "message": "Antwort vom Endpoint 2"
+              }
+            </code>
+          </pre>
+        </section>
+        <!-- Weitere Endpunkte -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
