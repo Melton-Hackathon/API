@@ -1,99 +1,36 @@
-    /* Custom styles for sidebar */
-    #doku-body {
-        display: flex;
-    }
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
 
-    .sidebar {
-        height: window.innerHeight;
-        width: 15%;
-        top: 0;
-        left: 0;
-        background-color: #121212;
-        overflow-x: hidden;
-        transition: 0.3s;
-        padding-top: 60px;
-    }
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-    .nav-item {
-        padding: 15px 15px;
-        text-decoration: none;
-        font-size: 20px;
-        color: rgb(75, 75, 75);
-        display: block;
-        transition: 0.3s;
-    }
+h1 {
+    margin-bottom: 20px;
+}
 
-    .sidebar a:hover {
-        color: #f1f1f1;
-        text-decoration: none;
-    }
+label {
+    margin-right: 10px;
+}
 
-    .doku-content {
-        width: 60%;
-        padding: 6rem;
-    }
+#apiDropdown {
+    padding: 5px;
+    font-size: 16px;
+}
 
-    #doku-title {
-        display: flex;
-        margin-bottom: 2rem;
-    }
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
 
-    #doku-title>strong {
-        color: rgb(75, 75, 75);
-        margin-top: 1.6rem;
-        margin-left: 8px;
-        font-size: 17px;
-    }
-
-    .doku-content{
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        overflow-y: scroll;
-    }
-
-    #output{
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 25%;
-        height: 100%;
-        background-color: rgb(24, 43, 61);
-        padding: 5%;
-        padding-top: 2.5%;
-    }
-
-    .big_text{
-        font-size: 30px;
-        font-weight: bold;
-        color: rgb(75, 75, 75);
-    }
-
-    .markdown-ul{
-        line-height: 5px;
-        margin-left: 25px;
-    }
-
-    .markdown-ul > li{
-        list-style-type: none;
-        margin-left: 4rem;
-    }
-
-    #creature-markdown-title{
-        cursor: pointer;
-    }
-
-    .rotated{
-        transform: rotate(90deg);
-        color: #f1f1f1;
-    }
-
-    #output > input{
-        width: 100%;
-        height: 40px;
-        padding: 3px;
-        background-color: rgb(14, 29, 43);
-        color: rgb(32, 95, 190);
-        border: none;
-    }
+.response {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    white-space: pre-wrap;
+}

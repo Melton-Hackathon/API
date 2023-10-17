@@ -20,6 +20,42 @@ module.exports = {
         }
     },
 
+    getUserLogin: async (req, res, next) => {
+        try {
+            const user = new UserSQL();
+            const result = await user.getUserLogin(req.body.username);
+            res.send({
+                success: true,
+                message: 'Successfully retrieved user',
+                data: JSON.stringify(result)
+            })
+        } catch (error) {
+            res.send({
+                success: false,
+                message: 'Failed to retrieve user',
+                data: JSON.parse(error)
+            })
+        }
+    },
+
+    getUserRole: async (req, res, next) => {
+        try {
+            const user = new UserSQL();
+            const result = await user.getUserRole(req.params.username);
+            res.send({
+                success: true,
+                message: 'Successfully retrieved user role',
+                data: JSON.stringify(result)
+            })
+        } catch (error) {
+            res.send({
+                success: false,
+                message: 'Failed to retrieve user role',
+                data: JSON.parse(error)
+            })
+        }
+    },
+
     createUser: async (req, res, next) => {
         try {
             const user = new UserSQL();

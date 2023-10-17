@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mysql = require('mysql2');
+const fs = require('fs');
 
 class DBController {
     constructor() {
@@ -46,7 +47,6 @@ class DBController {
             });
         });
     }
-    
 
     async fetchQueryData(query, dirname, method) {
         return new Promise((resolve, reject) => {
@@ -67,11 +67,25 @@ class DBController {
             });
         });
     }
-    
 
     __log(data) {
         const { message, path, method, status, query } = data;
         const timestamp = new Date().toISOString();
+
+        if (status) {
+            //check if logfile exists
+            if (!fs.existsSync('../logs')) {
+                fs.mkdirSync('../logs');
+                console.log('logs folder created')
+            }
+
+            //schreibe einen log in eine log file mit dem fehler in die file ../logs/error.log
+            fs.appendFile('../logs/error.log', `[${timestamp}] ${message} | ${path} => ${method}   +-+  ${status} \n`, (error) => {
+                if (error) {
+                    console.error('Error writing log:', error.message);
+                }
+            });
+        }
 
         console.log(`[${timestamp}] ${message} | ${path} => ${method}   +-+  ${status}`)
     }

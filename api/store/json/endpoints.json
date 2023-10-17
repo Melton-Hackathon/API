@@ -1,0 +1,70 @@
+{
+    "endpoints": [
+        {
+            "section": "Creatures",
+            "method": "GET",
+            "path": "/api/creatures",
+            "description": "Get all creatures",
+            "controller": "getAll",
+            "params": [],
+            "output": {
+                "success": true,
+                "message": "Successfully retrieved all creatures",
+                "data":
+                [
+                    {
+                        "id": "INT",
+                        "name": "STRING"
+                    }
+                ]
+            }
+        },
+        {
+            "section": "Creatures",
+            "method": "GET",
+            "path": "/api/creatureStats/:name",
+            "description": "Get creature stats",
+            "controller": "creatureWithCategory",
+            "params": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Name of creature"
+                }
+            ],
+            "output": {
+                "success": true,
+                "message": "Successfully retrieved all creatures with category",
+                "data":
+                [
+                    {
+                        "name": "STRING"
+                    }
+                ]
+            }
+        },
+        {
+            "section": "Users",
+            "method": "GET",
+            "path": "/api/benutzer",
+            "description": "Get all users",
+            "controller": "getAll",
+            "params": [],
+            "output": {
+                "success": true,
+                "message": "Successfully retrieved all users",
+                "data": 
+                [
+                    {
+                        "id": "INT",
+                        "user_type_id": "INT",
+                        "username": "STRING",
+                        "xp": "INT",
+                        "account_created": "DATE",
+                        "last_seen": "DATE"
+                    }
+                ]
+            }
+        }
+    ]
+}

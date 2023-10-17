@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
 
 app.use("/", express.static(path.join(__dirname, "public")));
 
@@ -17,11 +17,13 @@ app.use("/", express.static(path.join(__dirname, "public")));
 const matchHistoryRouter = require("./routes/matchHistory.router.js");
 const userRouter = require("./routes/user.router.js");
 const creatureRouter = require("./routes/creature.router.js");
+const endpointRouter = require("./routes/endpoint.router.js")
 
 // Benutzer-Routen verwenden
 app.use("/api/matchHistory", matchHistoryRouter);
 app.use("/api/benutzer", userRouter);
 app.use("/api/creature", creatureRouter);
+app.use("/api/endpoints", endpointRouter)
 
 
 const PORT = process.env.PORT || 3050;
