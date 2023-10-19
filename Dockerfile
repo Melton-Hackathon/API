@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /api
 
 # Installiere die Abhängigkeiten
-COPY ./package*.json ./
+COPY ./api/package*.json ./
 
 # Kopiere den gesamten Inhalt der "api"-Ordnerstruktur in den Container
 COPY ./api ./
