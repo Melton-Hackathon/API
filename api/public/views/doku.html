@@ -8,8 +8,10 @@
 
 <script>
     const apiConfig = [
-        { id: "creatureall", name: "API 1", url: "10.2.2.11/api/creature/all" },
-        { id: "creaturestats", name: "API 2", url: "10.2.2.11/api/creature/creatureStats/Shaman" },
+        { id: "creatureall", name: "Creature All", url: "/api/creature/all", method: "GET" },
+        { id: "creaturestats", name: "Creature Stats from Shaman", url: "/api/creature/creatureStats/Shaman", method: "GET" },
+        { id: "userall", name: "User All", url: "/api/benutzer/", method: "GET" },
+        { id: "userroles", name: "User Roles", url: "/api/benutzer/roles/test_user1", method: "GET" }
         // Add more API configurations here
     ];
 
@@ -43,6 +45,7 @@
         const data = {};  // Modify this based on your requirement
 
         if(requestMethod === "GET" || requestMethod === "DELETE"){
+            console.log(selectedAPI)
             fetch(selectedAPI, {
                 method: requestMethod,
                 headers: {
