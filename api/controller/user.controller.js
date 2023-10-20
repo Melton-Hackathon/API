@@ -75,5 +75,52 @@ module.exports = {
                 data: JSON.parse(error)
             })
         }
+    },
+
+    getAuth: async (req, res, next) => {
+        const user = new UserSQL();
+        try {
+            const hashArray = await user.getUserHash(req.body.user);
+            
+            if (hashArray.length > 0) {
+                const hash = hashArray[0].password;
+                const plaintextPassword = req.body.password; // Change to password field
+                
+                let tresult = false;
+    
+                const result = await new Promise((resolve, reject) => {
+                    bcrypt.compare(plaintextPassword, hash, (err, result) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(result);
+                        }
+                    });
+                });
+    
+                if (result) {
+                    tresult = true;
+                }
+                
+                res.send({
+                    success: true,
+                    message: 'Authentication successful',
+                    data: JSON.stringify(tresult)
+                });
+            } else {
+                res.send({
+                    success: false,
+                    message: 'User not found',
+                    data: null
+                });
+            }
+        } catch (error) {
+            res.send({
+                success: false,
+                message: 'Error during authentication',
+                data: JSON.parse(error)
+            });
+        }
     }
+    
 }

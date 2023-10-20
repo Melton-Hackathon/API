@@ -30,6 +30,14 @@ class UserSQL extends DBController {
         return result;
     }
     
+    getUserHash(username) {
+        this.connect();
+        const query = `SELECT password FROM users WHERE username = '${username}'`;
+        const result = this.executeQuery(query, __dirname, 'getUserRole');
+        this.disconnect();
+        return result;
+    }
+
     getUserRole(username) {
         this.connect();
         const query = `SELECT t.type, u.username FROM users u INNER JOIN user_types t ON t.id = u.user_type_id WHERE u.username = '${username}'`;
