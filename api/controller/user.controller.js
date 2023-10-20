@@ -61,8 +61,10 @@ module.exports = {
         try {
             const user = new UserSQL();
             const salt = await bcrypt.genSalt(10);
+            const uidseed = req.body.password + req.body.user;
             const hashedPassword = await bcrypt.hash(req.body.password, salt);
-            const result = await user.createUser(req.body.user, hashedPassword);
+            const uid = await bcrypt.hash(uidseed, salt);
+            const result = await user.createUser(req.body.user, hashedPassword, uid);
             res.send({
                 success: true,
                 message: 'Successfully created user',
@@ -79,6 +81,7 @@ module.exports = {
 
     getAuth: async (req, res, next) => {
         const user = new UserSQL();
+        const auth_token = new UserSQL();
         try {
             const hashArray = await user.getUserHash(req.body.user);
             
@@ -86,7 +89,7 @@ module.exports = {
                 const hash = hashArray[0].password;
                 const plaintextPassword = req.body.password; // Change to password field
                 
-                let tresult = false;
+                var tresult = '';
     
                 const result = await new Promise((resolve, reject) => {
                     bcrypt.compare(plaintextPassword, hash, (err, result) => {
@@ -99,7 +102,9 @@ module.exports = {
                 });
     
                 if (result) {
-                    tresult = true;
+                    const tokenarray = await auth_token.getUserAuthToken(req.body.user);
+                    const token = tokenarray[0].auth_token;
+                    tresult = token;
                 }
                 
                 res.send({

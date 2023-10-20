@@ -22,9 +22,9 @@ class UserSQL extends DBController {
         return result;
     }
 
-    createUser(username, hashedPassword) {
+    createUser(username, hashedPassword, uid) {
         this.connect();
-        const query =  `INSERT INTO users (id, user_type_id, password, username, xp, mail, account_created, last_seen) VALUES (NULL, '3', '${hashedPassword}', '${username}', '0', 'ss', CURRENT_DATE(), CURRENT_TIME() );`;
+        const query =  `INSERT INTO users (id, user_type_id, password, username, xp, mail, account_created, last_seen, auth_token) VALUES (NULL, '3', '${hashedPassword}', '${username}', '0', 'ss', CURRENT_DATE(), CURRENT_TIME(), '${uid}' );`;
         const result = this.executeQuery(query, __dirname, 'getUserRole');
         this.disconnect();
         return result;
@@ -33,6 +33,14 @@ class UserSQL extends DBController {
     getUserHash(username) {
         this.connect();
         const query = `SELECT password FROM users WHERE username = '${username}'`;
+        const result = this.executeQuery(query, __dirname, 'getUserRole');
+        this.disconnect();
+        return result;
+    }
+
+    getUserAuthToken(username) {
+        this.connect();
+        const query = `SELECT auth_token FROM users WHERE username = '${username}'`;
         const result = this.executeQuery(query, __dirname, 'getUserRole');
         this.disconnect();
         return result;
