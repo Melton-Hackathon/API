@@ -11,7 +11,8 @@
         { id: "creatureall", name: "Creature All", url: "/api/creature/all", method: "GET" },
         { id: "creaturestats", name: "Creature Stats from Shaman", url: "/api/creature/creatureStats/Shaman", method: "GET" },
         { id: "userall", name: "User All", url: "/api/benutzer/", method: "GET" },
-        { id: "userroles", name: "User Roles", url: "/api/benutzer/roles/test_user1", method: "GET" }
+        { id: "userroles", name: "User Roles", url: "/api/benutzer/roles/test_user1", method: "GET" },
+        { id: "createuser", name: "Create User", url: "/api/benutzer/create", method: "POST", data: {password: "te44st", user: "Inocentapitesting" } }
         // Add more API configurations here
     ];
 
@@ -32,7 +33,7 @@
 
         apiConfig.forEach(url => {
             if (url.id === selectedAPI) {
-                selectedAPI = url.url;
+                selectedAPI = url;
             }
         });
 
@@ -41,12 +42,12 @@
             return;
         }
 
-        const requestMethod = "GET";  // Modify this based on your requirement
+        const requestMethod = selectedAPI.method;  // Modify this based on your requirement
         const data = {};  // Modify this based on your requirement
 
         if(requestMethod === "GET" || requestMethod === "DELETE"){
-            console.log(selectedAPI)
-            fetch(selectedAPI, {
+            console.log(selectedAPI.url)
+            fetch(selectedAPI.url, {
                 method: requestMethod,
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,12 +56,12 @@
               .then(data => displayResponse(data))
               .catch(error => console.error('Error:', error));
         }else{
-            fetch(selectedAPI, {
+            fetch(selectedAPI.url, {
                 method: requestMethod,
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)  // Modify this based on your requirement
+                body: JSON.stringify(selectedAPI.data)  // Modify this based on your requirement
             }).then(response => response.json())
               .then(data => displayResponse(data))
               .catch(error => console.error('Error:', error));

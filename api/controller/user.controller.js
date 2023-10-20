@@ -61,7 +61,7 @@ module.exports = {
             const user = new UserSQL();
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(req.body.password, salt);
-            const result = await user.createUser(req.body.username, hashedPassword);
+            const result = await user.createUser(req.body.user, hashedPassword);
             res.send({
                 success: true,
                 message: 'Successfully created user',
