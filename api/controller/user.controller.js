@@ -40,6 +40,7 @@ module.exports = {
 
     getUserRole: async (req, res, next) => {
         try {
+            console.log(req.params.username)
             const user = new UserSQL();
             const result = await user.getUserRole(req.params.username);
             res.send({
