@@ -126,6 +126,10 @@ module.exports = {
                 data: JSON.parse(error)
             });
         }
-    }
+    },
+
+    // checkToken: 
+
+    
     
 }
